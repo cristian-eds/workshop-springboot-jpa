@@ -9,25 +9,27 @@ import org.springframework.stereotype.Service;
 import com.cristian.spring.entities.User;
 import com.cristian.spring.repositories.UserRepository;
 
-
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository repository;
-	
+
 	public List<User> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public User findById(Long id) {
 		Optional<User> user = repository.findById(id);
 		return user.get();
 	}
-	
+
 	public User insertUser(User userObj) {
 		return repository.save(userObj);
 	}
-	
-	
+
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+
 }
